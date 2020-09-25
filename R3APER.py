@@ -25,7 +25,7 @@ print("        \::|   |                 \:::\____\                /:::/    /    
 print("         \:|   |                  \::/    /                \::/    /                                         \::/    /                \:|   |          ")
 print("          \|___|                   \/____/                  \/____/                                           \/____/                  \|___|          ")
 print("                                                                                                                                                       ")
-print("                                                                                       .: Authour- Jean Paul :.                                        ")
+print("                                                                                       .: Author- Jean Paul :.                                        ")
 print('\n'*3)
 print("                                                             .:Starting REAPER:.")
 print('\n'*2)
