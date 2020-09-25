@@ -1,5 +1,5 @@
 # R3APER
-Written in python using python3-nmap library
+Written in python using python-nmap library
 
 This tool is used to recon an IP with specific port using python-nmap libraries using nmap as a base
 
