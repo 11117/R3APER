@@ -4,8 +4,9 @@ Written in python using python3-nmap library
 This tool is used to recon an IP with specific port using python-nmap libraries using nmap as a base
 
 # Reqiurements
-pip install nmap
-Pip install python3-nmap
+Need to have nmap installed on your OS
+
+for python V3 and above: "pip3 install python-nmap"
 
 # Note
 
