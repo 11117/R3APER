@@ -43,7 +43,7 @@ print('=='*70)
 with open("D:\\test\\test.csv",'r') as file:    
     csv_file=csv.DictReader(file)
     for i,j in enumerate(csv_file):
-        t=nscan.scan(j['ip'],j['port'])
+        t=nscan.scan(j['ip'],j['port'],'-v -sVUS -Pn')
         try:
             cmdline=t['nmap']['command_line']
             scanstats=t['nmap']['scanstats']
