@@ -36,14 +36,23 @@ nscan=nmap.PortScanner()
 """gets current working directory"""
 current_directory=getcwd() 
 print("               Your Current Working Directory is  : ",current_directory)
+path_to_iplist=current_directory+'\\test.csv'
+lines = len(open(path_to_iplist).readlines(  ))
+totalnum=lines-1
 
 """Note:filepath may wary for different operating system"""
 print('=='*70)
+outpath=current_directory+"\\R3APER_Output.csv"
+myFile = open(outpath, 'a+',newline='')
+csv_out = csv.writer(myFile)
+csv_out.writerow(["CommandLine","Scan_time","Time_Elapsed","UpHost","DownHost","TotalHosts","IP","Hostnames","Host_status","Addresses","TCP_Port_State","TCP_Reason","TCP_Name","UDP_Port_State","UDP_Reason","UDP_Name","TCP_Product","TCP_Version","TCP_CPE","TCP_ExtraInfo","UDP_Product","UDP_Version","UDP_CPE","UDP_ExtraInfo"])
 
 with open("D:\\test\\test.csv",'r') as file:    
     csv_file=csv.DictReader(file)
     for i,j in enumerate(csv_file):
-        t=nscan.scan(j['ip'],j['port'],'-v -sVUS -Pn')
+        print("Currently working on : ",i+1,"IP from Total IP(s) to Scan: ",totalnum)
+        print("Scanning  ===>  ",j['ip'])
+        t=nscan.scan(j['ip'],j['port'],'-sVUS -Pn')
         try:
             cmdline=t['nmap']['command_line']
             scanstats=t['nmap']['scanstats']
@@ -66,8 +75,23 @@ with open("D:\\test\\test.csv",'r') as file:
                 version=t['scan'][j['ip']]['tcp'][k]['version']
                 cpe=t['scan'][j['ip']]['tcp'][k]['cpe']
                 extrainfo=t['scan'][j['ip']]['tcp'][k]['extrainfo']
+            for u in t['scan'][j['ip']]['udp'].keys():
+                udp_port_state=t['scan'][j['ip']]['udp'][u]['state']
+                udp_reason=t['scan'][j['ip']]['udp'][u]['reason']
+                udp_name=t['scan'][j['ip']]['udp'][u]['name']
+                udp_product=t['scan'][j['ip']]['udp'][u]['product']
+                udp_version=t['scan'][j['ip']]['udp'][u]['version']
+                udp_cpe=t['scan'][j['ip']]['udp'][u]['cpe']
+                udp_extrainfo=t['scan'][j['ip']]['udp'][u]['extrainfo']
         except:
                 Host_status="None"
+                udp_port_state="None"
+                udp_reason="None"
+                udp_name="None"
+                udp_product="None"
+                udp_version="None"
+                udp_cpe="None"
+                udp_extrainfo="None"
                 port_state="None"
                 Time_Elapsed="None"
                 UpHost="None"
@@ -84,33 +108,16 @@ with open("D:\\test\\test.csv",'r') as file:
                 extrainfo="None"
                 
         print('_'*20)
+        csv_out.writerow([cmdline,Scan_Time,Time_Elapsed,UpHost,DownHost,TotalHosts,IP,Hostnames,Host_status,Addresses,port_state,reason,name,udp_port_state,udp_reason,udp_name,product,version,cpe,extrainfo,udp_product,udp_version,udp_cpe,udp_extrainfo])
         print("Command Line:::",cmdline)
         print('_'*20)
         print("|| ScanStats:::        ||\n")
-        print("||   Scan-Time: ",Scan_Time)
-        print("||   Time-Elapsed: ",Time_Elapsed)
-        print("||   UpHost: ",UpHost)
-        print("||   DownHost: ",DownHost)
-        print("||   TotalHosts: ",TotalHosts)
+        print("||   Scan-Time: ",Scan_Time,"||   Time-Elapsed: ",Time_Elapsed,"||   UpHost: ",UpHost,"||   DownHost: ",DownHost,"||   TotalHosts: ",TotalHosts)
         print('_'*20)
         print("|| Scan Data:::        ||\n")
-        print("||   IP: ",IP)
-        print("||   Addresses: ",Addresses)
-        print("||   Host_status: ",Host_status)
-        print("||   Port-Status::",port_state)
-        print("||   Reason: ",reason)
-        print("||   Name: ",name)
-        print("||   Product: ",product)
-        print("||   Version: ",version)
-        print("||   CPE: ",cpe)
-        print("||   ExtraInfo: ",extrainfo)
-        
+        print("||   IP: ",IP," Addresses: ",Addresses,"  Hostnames: ",Hostnames,"  Host_status: ",Host_status,"  TCP_Port-Status::",port_state,"  TCP_Reason: ",reason," TCP_Name: ",name,"  TCP_Product: ",product," TCP_Version: ",version,"  TCP_CPE: ",cpe,"  TCP_ExtraInfo: \n",extrainfo)
+        print("||   UDP_Port-Status::",udp_port_state,"  UDP_Reason: ",udp_reason," UDP_Name: ",udp_name," UDP_Product: ",udp_product," UDP_Version: ",udp_version,"  UDP_CPE: ",udp_cpe," UDP_ExtraInfo: \n",udp_extrainfo)
         
         print('=='*70)
     
-    
-    
-    
-    
-    
-    
+ 
