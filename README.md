@@ -10,20 +10,9 @@ for python V3 and above: "pip3 install python-nmap"
 
 # How to Use
 
-1. First changes the file path mention in the code 
-
-   i.e if your using windows its something like -> "D:\\test\\test.csv"
-
+1. Add the filepath to your IP list in the code - i.e if your using windows its something like -> "D:\\test\\test.csv"
    if your using linux -> "home/username/file"
-   
-2. the csv file should be in the format ip,port (Have attached a sample test.csv)
+2. The Ip's list should be placed in a csv file and be in the format "ip,port" (Have attached a sample test.csv)
+3. To Run the file:  python3 R3APER.py
 
-
-
-# To Run the file:  python3 R3APER
-
-# Note
-
-Depending on the operating system used the file path needs to be changed accordingly.
-
-The Script was tested in windows 10 environment
+# Note: The script was tested successfully in windows 10 environment
