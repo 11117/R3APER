@@ -47,7 +47,7 @@ myFile = open(outpath, 'a+',newline='')
 csv_out = csv.writer(myFile)
 csv_out.writerow(["CommandLine","Scan_time","Time_Elapsed","UpHost","DownHost","TotalHosts","IP","Hostnames","Host_status","Addresses","TCP_Port_State","TCP_Reason","TCP_Name","UDP_Port_State","UDP_Reason","UDP_Name","TCP_Product","TCP_Version","TCP_CPE","TCP_ExtraInfo","UDP_Product","UDP_Version","UDP_CPE","UDP_ExtraInfo"])
 
-with open("D:\\test\\test.csv",'r') as file:    
+with open(path_to_iplist,'r') as file:    
     csv_file=csv.DictReader(file)
     for i,j in enumerate(csv_file):
         print("Currently working on : ",i+1,"IP from Total IP(s) to Scan: ",totalnum)
