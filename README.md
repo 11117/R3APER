@@ -8,8 +8,8 @@ Install "python-nmap" library: for python V3 and above: "pip3 install python-nma
 
 # How to Use
 
-1. Add the filename of your IP list into the code (R3APER.py Line 39 : path_to_iplist=current_directory+'\\test.csv')
-2. The Ip's list should be placed as a csv file and be in the given format => "ip,port" (Have attached a sample test.csv)
+1. Make a "test.csv" file which contains all the IP's with its respective ports and save it under the same directory as your R3APER script location
+2. The "test.csv" file should be the following format => "ip,port" (Have attached a sample test.csv)
 3. To Run the file:  python3 R3APER.py
 4. Depending on the type of scan needed you can change the nmap parameters in the code (R3APER.py Line 55:  t=nscan.scan(j['ip'],j['port'],'-sVUS -Pn'))
 
